@@ -163,8 +163,8 @@ public class GroundItems {
         final String EXPENSIVE_MINIMAP_MARKING = "expensive_minimap_marking";
 
         try {
-            settings = new PropertiesSettings(helper.getContainer().pluginData.id(),
-                    helper.getContainer().pluginData.name() + " - " + helper.getContainer().pluginData.name() + ".properties") {
+            settings = new PropertiesSettings(helper.getContainer().pluginData.id() + ".properties",
+                    helper.getContainer().pluginData.name() + " - " + helper.getContainer().pluginData.description()) {
                 @Override
                 public void checkKeys() {
                     Map<String, Object> defaultProperties = ImmutableMap.<String, Object>builder()
