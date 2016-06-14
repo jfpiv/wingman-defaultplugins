@@ -5,6 +5,9 @@ before_install:
  
 script:
  - ./gradlew build
+ 
+before_deploy:
+  - export OUT_FILES=$(ls build/libs/*.jar)
 
 deploy:
   skip_cleanup: true
@@ -12,6 +15,6 @@ deploy:
   api_key:
     secure: "1SVpGPqzoyHcIgX+bp5057b7xq//Mpdx36TQexzl87Q+BmT+n50fL1t4IpYMLoxlRv62AAVkIPElYbfEFHPfGKLu8h9HIORd7meLgCktU3J70dhCLQjPFfANzetT+caaYPG6MpS0i603qfh0VQ0i6oCBw6PCTh85zGyxMhQRzGyLxt/gIOFGgyarONAJFsuW3jdbXqE7oszUxxH6yWoIfOSQ83iwtjUU2E+3oqo+s+vL67yjvqC/ufPxmk3iQfFd/JoAHGWRIW357d+epYHWvqMMEfZWyh22bvSw2o7MWX2vB7tw6HIS6NmXzSp70oWXFR9i4eJLkXf2Ro5ej4rJ6vjlYCzn5CIojVD/jl60K5wozR2I8Gt9v/03Ft9Le9ZPnC+F4RtlU7QgPHxQdRLY1d3agUQmeO9+D8Y4qdWYxp9At27sbk1xOrRMb7oIxmZlVXKkj0X3kv17/nq+QxCAF9uytzl65MC9XLvX6k69IgT3M3mw8DxZtsSzy8euOqBQCv4fQRDMyh3Ih5byfVZHlKse/mUC3mFGdxhiGBvp9WH06xSWCHn5GvsZ/IMwRdytMX24T0T/FHLC+WWnO1gd46P3iHuf46b3/MfxtKGs58INhepBW3845vzcAzn6vFQK5bg2y9Ol/fD62r8UTD4WeXNDlHXrfUnpXIbkY57qDlw="
   file_glob: true
-  file: "build/libs/*.jar"
+  file: "${OUT_FILES}"
   on:
     tags: true
