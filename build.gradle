@@ -1,0 +1,32 @@
+apply plugin: 'java'
+
+sourceCompatibility = 1.7
+jar.archiveName = "Wingman-defaultplugins.jar"
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile 'com.google.code.gson:gson:2.6.2'
+    compile 'com.google.guava:guava:19.0'
+    compile 'com.squareup.okhttp:okhttp:2.7.5'
+    compile 'com.squareup.okio:okio:1.7.0'
+	compile fileTree(dir: 'libs', include: ['*.jar'])
+}
+
+def jarPackage(artifactName) { 
+	return tasks.create("jar${artifactName}", Jar) { 
+		archiveName = "${artifactName}-default.jar"
+		from(sourceSets.main.output) { 
+			include "com/wingman/defaultplugins/$artifactName/**" 
+			include "$artifactName/**" 
+		} 
+	} 
+}
+
+artifacts {
+	new File('src/main/java/com/wingman/defaultplugins').eachDir { dir ->
+		archives jarPackage(dir.getName())
+	}
+}

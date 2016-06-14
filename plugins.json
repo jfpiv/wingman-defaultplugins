@@ -1,0 +1,14 @@
+{
+  "plugins": [
+    {
+      "name":"Ground Items",
+      "desc":"Diplays the item name, quantity and price of an item on the ground.",
+      "jar":"grounditems-default.jar"
+    },
+    {
+      "name":"Developer Utilities",
+      "desc":"Extends the client API with useful utility functionality.",
+      "jar":"devutils-default.jar"
+    }
+  ]
+}
